@@ -1,3 +1,4 @@
+use std::cmp::Ordering;
 use std::io;
 use rand::Rng;
 
@@ -6,7 +7,6 @@ fn main() {
 
     let secret_number = rand::thread_rng()
         .gen_range(1..=100);
-    println!("the secret number is {secret_number}");
 
     println!("enter the number");
 
@@ -16,4 +16,10 @@ fn main() {
         .expect("something went wrong");
 
     println!("your number: {guess_number}");
+    
+    match guess_number.cmp(&secret_number) {
+        Ordering::Less=>println!("too small"),
+        Ordering::Greater=>println!("too big"),
+        Ordering::Equal=>println!("you won!")
+    }
 }
