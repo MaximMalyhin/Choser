@@ -16,6 +16,10 @@ fn main() {
             .read_line(&mut guess_string)
             .expect("something went wrong");
 
+        if guess_string.trim() == "quit" {
+            break;
+        }
+
         let guess_number: u32 = match guess_string.trim().parse() {
             Ok(num) => num,
             Err(_) => {
