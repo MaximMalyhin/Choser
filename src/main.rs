@@ -16,7 +16,13 @@ fn main() {
             .read_line(&mut guess_string)
             .expect("something went wrong");
 
-        let guess_number: u32 = guess_string.trim().parse().expect("thats not a number...");
+        let guess_number: u32 = match guess_string.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("thats not a number");
+                continue
+            }
+        };
 
         println!("your number: {guess_number}");
 
