@@ -2,7 +2,12 @@ use std::cmp::Ordering;
 use std::io;
 use rand::Rng;
 
+mod variables;
+
 fn main() {
+
+    variables::variables();
+
     println!("guess the number");
 
     let secret_number = rand::thread_rng()
